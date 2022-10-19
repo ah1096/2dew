@@ -1,40 +1,27 @@
 import './App.css'
+import InputBlock from'./InputBlock.js';
+import ListBlock from './ListBlock.js';
+import ControlBlock from './ControlBlock.js';
+
+
 
 export default function App(){
     return(
-        <div>
-            <h1>To Dew List</h1>
+        <div class="container">
 
-            <input type="text"></input>
-            <button>+</button>
+            <div class="row justify-content-center pb-3 mb-3">
+                <div class="col-3">
 
+                    <InputBlock />
 
-            <ul>
-                <li>
-                    <input type="checkbox"></input>
-                    eat bugs
-                </li>
+                    <ListBlock />
 
-                <li>
-                    <input type="checkbox"></input>
-                    sit on a leaf
-                </li>
+                </div>
+            </div>
 
-                <li>
-                    <input type="checkbox"></input>
-                    fight god
-                </li>
-            </ul>
-
-            <footer>
-                <p>1 item left</p> 
-                <p> all | to-dew | to-did</p>
-                <button>clear</button>
-            </footer>
+            <ControlBlock />
 
         </div>
-
-
 
 
     )

@@ -1,5 +1,22 @@
+h1 {
+    padding-top: 30px;
+}
+
 ul {
     list-style: none;
-    padding-left: 10px;
+    padding-left: 0px;
+}
+
+
+/* #itemCounter {
+    display: inline;
+} */
+
+#toggleButtons{
+    padding-left: 0px;
+}
+
+#clearBtn {
+    margin-left: 20px;
 }
 
