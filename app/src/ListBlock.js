@@ -2,19 +2,25 @@ import ListItem from './ListItem.js';
 
 
 
-export default function ListBlock(){
+export default function ListBlock({tasks}){
+
+
+    const toDoList = tasks.map(item => 
+        <div key={item.id}>
+            <ListItem 
+                item={item.item}
+                id={item.id}
+                />
+        </div>)
 
     return (
-        <div class="row">
+        <div className="row">
 
-        <div class="col">
-        <ul class="list-group">
+        <div className="col">
+        <ul className="list-group">
 
-            <ListItem />
+           {toDoList}
 
-            <ListItem />
-
-            <ListItem />
             </ul>
         </div>
 

@@ -1,29 +1,31 @@
-export default function ListItem({ setItem, setTask }){
+export default function ListItem({ item, id }){
+
+
 
     return (
-        <li class="list-group-item d-flex align-items-center justify-content-between">
+        <li className="list-group-item d-flex align-items-center justify-content-between">
 
                 <div>
                     <input 
-                        class="form-check-input me-1" 
+                        className="form-check-input me-1" 
                         type="checkbox" 
                         value="" 
                         id="firstCheckbox"/>
 
                         <label  
-                            class="form-check-label" 
-                            for="firstCheckbox"
-                            name={item}
+                            className="form-check-label" 
+                            htmlFor="firstCheckbox"
+                            item={item}
                             id={id}
                             // status="active"
                             >    
-                                {item}??????????
+                                {item}
                         </label>
 
                 </div>
                 
-                    <div class="align-self-end">
-                        <button class="btn btn-danger" type="button" id="deleteItemBtn">x</button>
+                    <div className="align-self-end">
+                        <button className="btn btn-danger" type="button" id="deleteItemBtn">x</button>
                     </div>
             </li>
     )

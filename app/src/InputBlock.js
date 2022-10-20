@@ -1,41 +1,34 @@
-import { useState } from 'react';
-import ListItem from './ListItem';
+import { useState } from "react";
 
 
-export default function InputBlock(){
-    
-    let nextID= 0
-
-        const [item, setItem] = useState('');
-        const [tasks, setTask] = useState([]);
-
-        // const [status, setStatus] = useState(true) <<<add this to use toggle buttons later
+export default function InputBlock({ tasks, setTask }){
+    const [item, setItem] = useState('');
 
         return (
 
-            <div id="inputBlock" class="text-center">
+            <div id="inputBlock" className="text-center">
 
                 <h1>To Dew List</h1>
 
-                <div id="addTask" class="input-group mb-3">
+                <div id="addTask" className="input-group mb-3">
                     <input 
                         id="itemInput" 
                         type="text" 
-                        class="form-control" 
+                        className="form-control" 
                         placeholder="add a task" 
                         value = {item}
-                        onChange={e => setName(e.target.value)}
+                        onChange={e => setItem(e.target.value)}
                     />
 
                     <button 
-                        class="btn btn-success" 
+                        className="btn btn-success" 
                         type="button" 
                         id="addItemBtn"
                         onClick={()=> {
                             setItem('');
                             setTask([
                                 ...tasks,
-                                { id: nextID++, item: item}
+                                { id: Date.now(), item: item}
                             ])
                         }}
                         >
@@ -43,11 +36,6 @@ export default function InputBlock(){
                     </button>
 
                     
-                    
-                    <ListItem 
-                        setItem={setItem}
-                        setTask={setTask}
-                    />
                     
 
 
