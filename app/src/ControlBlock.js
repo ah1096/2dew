@@ -1,8 +1,11 @@
 import ToggleButton from './ToggleButton.js';
 
 
-export default function ControlBlock(){
 
+export default function ControlBlock({setTask, tasks}){
+
+
+    
     return (
         <div id="controlBlock" className="row text-center">
 
@@ -14,7 +17,14 @@ export default function ControlBlock(){
             
                     <ToggleButton />
 
-                    <button id="clearBtn" className="btn btn-success">
+                    <button 
+                        id="clearBtn" 
+                        className="btn btn-success"
+
+                        onClick={() => {setTask(tasks = [])
+                            
+                    }}
+                    >
                         clear
                     </button>
 

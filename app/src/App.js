@@ -9,19 +9,9 @@ import { useState } from 'react'
 export default function App(){
 
 
-
-
     const [tasks, setTask] = useState([]);
 
-    // const [status, setStatus] = useState(true) <<<add this to use toggle buttons later
-
-
-    
-
-
-
-
-
+    const [status, setStatus] = useState(true);
 
     return(
         <div className="container">
@@ -41,7 +31,10 @@ export default function App(){
                 </div>
             </div>
 
-            <ControlBlock />
+            <ControlBlock 
+                setTask={setTask}
+                tasks={tasks}
+                />
 
         </div>
 

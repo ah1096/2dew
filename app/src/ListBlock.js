@@ -20,9 +20,9 @@ export default function ListBlock({item, id, setTask, tasks}){
         <div className="row">
 
         <div className="col">
-        <ul className="list-group">
+            <ul className="list-group">
 
-           {toDoList}
+                {toDoList}
 
             </ul>
         </div>

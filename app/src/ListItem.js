@@ -1,6 +1,6 @@
 
 
-export default function ListItem({ item, id, setTask, tasks, setItem }){
+export default function ListItem({ item, id, setTask, tasks, setItem, status, setStatus }){
 
     return (
         <li className="list-group-item d-flex align-items-center justify-content-between">
@@ -17,7 +17,7 @@ export default function ListItem({ item, id, setTask, tasks, setItem }){
                             htmlFor="firstCheckbox"
                             item={item}
                             id={id}
-                            // status="active"
+                            status="active"
                             >    
                                 {item}
                         </label>
@@ -30,10 +30,8 @@ export default function ListItem({ item, id, setTask, tasks, setItem }){
                             type="button" 
                             id="deleteItemBtn"
                             onClick={() => {
-
                                     setTask(tasks.filter(a =>
                                         a.id !== id))
-  
                             }}
 
 
