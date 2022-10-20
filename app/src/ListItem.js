@@ -1,4 +1,6 @@
-export default function ListItem({ name, id }) {
+export default function ListItem({ item, id, 
+                                    // status="active" 
+                                }) {
 
     return (
         <li class="list-group-item d-flex align-items-center justify-content-between">
