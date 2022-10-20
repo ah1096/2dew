@@ -1,6 +1,4 @@
-export default function ListItem({ item, id, 
-                                    // status="active" 
-                                }) {
+export default function ListItem({ setItem, setTask }){
 
     return (
         <li class="list-group-item d-flex align-items-center justify-content-between">
@@ -17,7 +15,7 @@ export default function ListItem({ item, id,
                             for="firstCheckbox"
                             name={item}
                             id={id}
-                            // status="true"
+                            // status="active"
                             >    
                                 {item}??????????
                         </label>

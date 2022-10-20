@@ -43,10 +43,12 @@ export default function InputBlock(){
                     </button>
 
                     
-                    <ListItem
-                        name=""
-                        id=""
+                    
+                    <ListItem 
+                        setItem={setItem}
+                        setTask={setTask}
                     />
+                    
 
 
                     </div>
