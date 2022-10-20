@@ -1,6 +1,6 @@
-export default function ListItem({ item, id }){
 
 
+export default function ListItem({ item, id, setTask, tasks, setItem }){
 
     return (
         <li className="list-group-item d-flex align-items-center justify-content-between">
@@ -25,7 +25,19 @@ export default function ListItem({ item, id }){
                 </div>
                 
                     <div className="align-self-end">
-                        <button className="btn btn-danger" type="button" id="deleteItemBtn">x</button>
+                        <button 
+                            className="btn btn-danger" 
+                            type="button" 
+                            id="deleteItemBtn"
+                            onClick={() => {
+
+                                    setTask(tasks.filter(a =>
+                                        a.id !== id))
+  
+                            }}
+
+
+                            >x</button>
                     </div>
             </li>
     )

@@ -34,7 +34,8 @@ export default function App(){
                         tasks={tasks}/>
 
                     <ListBlock 
-                        tasks={tasks}/>
+                        tasks={tasks}
+                        setTask={setTask}/>
 
 
                 </div>
