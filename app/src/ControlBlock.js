@@ -21,9 +21,7 @@ export default function ControlBlock({setTask, tasks}){
                         id="clearBtn" 
                         className="btn btn-success"
 
-                        onClick={() => {setTask(tasks = [])
-                            
-                    }}
+                        onClick={() => {setTask(tasks = [])}}
                     >
                         clear
                     </button>

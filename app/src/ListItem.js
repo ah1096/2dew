@@ -10,14 +10,18 @@ export default function ListItem({ item, id, setTask, tasks, setItem, status, se
                         className="form-check-input me-1" 
                         type="checkbox" 
                         value="" 
-                        id="firstCheckbox"/>
+                        id="firstCheckbox"
+                        onClick={() => {
+                            if (status === "active"){
+                            setStatus(status = "done")}}}
+                    />
 
                         <label  
                             className="form-check-label" 
                             htmlFor="firstCheckbox"
                             item={item}
                             id={id}
-                            status="active"
+                            status={status}
                             >    
                                 {item}
                         </label>

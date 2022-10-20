@@ -3,15 +3,14 @@ import './App.css'
 import InputBlock from'./InputBlock.js';
 import ListBlock from './ListBlock.js';
 import ControlBlock from './ControlBlock.js';
-import { useState } from 'react'
+import { useState } from 'react';
 
 
 export default function App(){
 
 
     const [tasks, setTask] = useState([]);
-
-    const [status, setStatus] = useState(true);
+    const [status, setStatus] = useState("active");
 
     return(
         <div className="container">
@@ -21,11 +20,16 @@ export default function App(){
 
                     <InputBlock 
                         setTask={setTask} 
-                        tasks={tasks}/>
+                        tasks={tasks}
+                        setStatus={setStatus}
+                        status={status}
+                        />
 
                     <ListBlock 
                         tasks={tasks}
-                        setTask={setTask}/>
+                        setTask={setTask}
+                        setStatus={setStatus}
+                        status={status}/>
 
 
                 </div>
@@ -34,6 +38,8 @@ export default function App(){
             <ControlBlock 
                 setTask={setTask}
                 tasks={tasks}
+                setStatus={setStatus}
+                status={status}
                 />
 
         </div>

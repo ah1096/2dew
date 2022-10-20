@@ -2,7 +2,7 @@ import ListItem from './ListItem.js';
 
 
 
-export default function ListBlock({item, id, setTask, tasks}){
+export default function ListBlock({item, id, setTask, tasks, status, setStatus}){
 
 
     const toDoList = tasks.map(item => 
@@ -12,6 +12,8 @@ export default function ListBlock({item, id, setTask, tasks}){
                 id={item.id}
                 setTask={setTask}
                 tasks={tasks}
+                status={status}
+                setStatus={setStatus}
 
                 />
         </div>)
