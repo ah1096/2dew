@@ -5,7 +5,6 @@ export default function InputBlock({ tasks, setTask }){
 
     const [item, setItem] = useState('');
 
-    useEffect(() => {
 
         return (
 
@@ -47,5 +46,5 @@ export default function InputBlock({ tasks, setTask }){
 
             </div>
 
-       )})};
+       )};
         
