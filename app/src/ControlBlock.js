@@ -11,7 +11,7 @@ export default function ControlBlock({setTask, tasks}){
                 <div className="col">
 
                     <p id="itemCounter" className="text-danger">
-                        1 item left
+                        {tasks.length} item(s) left
                     </p>
             
                     <ToggleButton />

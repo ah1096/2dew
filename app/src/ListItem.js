@@ -11,10 +11,26 @@ export default function ListItem({ item, id, setTask, tasks, setItem, status, se
                         type="checkbox" 
                         value="" 
                         id="firstCheckbox"
+
+
+// checkboxes don't toggle back and forth between active and done                        
                         onClick={() => {
                             if (status === "active"){
-                            setStatus(status = "done")}}}
-                    />
+                                setStatus("done")
+
+                            
+                            }}
+                        
+                            // let clickCount = 2
+                
+                            // if (clickCount % 2 === 0){
+                            // setStatus(status = "done")
+                            // }else{setStatus(status = "active")};
+
+                            // clickCount++
+                            // console.log(clickCount);
+                        // }}
+                            }/>
 
                         <label  
                             className="form-check-label" 

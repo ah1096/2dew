@@ -9,9 +9,11 @@ export default function ToggleButton({ item, id, setTask, tasks, setItem, status
                 name="btnradio" 
                 autoComplete="off"
                 
-                onClick={() => {
-                    if (status === "active"){
-                    setStatus(status = "done")}}}
+                // onClick={() => {
+
+                //     show all items, regardless of status
+                    
+                //     }}
                 
                 />
                 <label className="btn btn-outline-success" htmlFor="toggleAllBtn">
@@ -23,7 +25,15 @@ export default function ToggleButton({ item, id, setTask, tasks, setItem, status
                 type="radio" 
                 className="btn-check" 
                 name="btnradio" 
-                autoComplete="off"/>
+                autoComplete="off"
+                
+                // onClick={(
+
+                     //show only status=active items
+
+                // )}  
+                
+                />
                 <label 
                     className="btn btn-outline-success" 
                     htmlFor="toggleToDewBtn">
@@ -35,7 +45,13 @@ export default function ToggleButton({ item, id, setTask, tasks, setItem, status
                 type="radio" 
                 className="btn-check" 
                 name="btnradio" 
-                autoComplete="off"/>
+                autoComplete="off"
+                
+                // onClick={(
+
+                //     show only status=done items
+                // )}
+                />
                 <label className="btn btn-outline-success" htmlFor="toggleDoneBtn">
                     done
                 </label>
