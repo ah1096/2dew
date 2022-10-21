@@ -12,9 +12,11 @@ export default function App(){
     });
     const [status, setStatus] = useState("active");
 
-  
     useEffect (() => {localStorage.setItem('tasks', JSON.stringify(tasks));
-    }, [tasks]);
+    }, [tasks]); //second param = tasks = array of values to watch/values that when changed, trigger useeffect
+    //if empty array, no values that will trigger rereun, TF can only run on 1st render (***see API calls)
+    //if thing in array, when value update, useeffect runs again
+    //METHOD 2: create another function from setTask which write to lo. storage, then state (***see Jonathan's code)
 
 
     return(
