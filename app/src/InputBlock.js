@@ -6,11 +6,6 @@ export default function InputBlock({ tasks, setTask }){
     const [item, setItem] = useState('');
 
     useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-        if (tasks) {
-            setTask(tasks);
-        }
-        }, []);
 
         return (
 
@@ -52,8 +47,5 @@ export default function InputBlock({ tasks, setTask }){
 
             </div>
 
-
-
-        )
-    
-}
+       )})};
+        

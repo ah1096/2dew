@@ -2,6 +2,24 @@
 
 export default function ListItem({ item, id, setTask, tasks, setItem, status, setStatus }){
 
+
+    const handleClick = (id, e) => {
+        let checkbox = e.target
+        if (checkbox.checked === true) {
+            setItem(item.map(fwog => fwog.id === id ? {...fwog, status: active} : fwog))
+            checkbox.checked = true 
+        } else {
+            setItem(item.map(fwog => item.id === id ? {...fwog, statu: done} : fwog))
+            checkbox.checked = false
+        }
+        }
+
+
+
+
+
+
+
     return (
         <li className="list-group-item d-flex align-items-center justify-content-between">
 
@@ -13,14 +31,13 @@ export default function ListItem({ item, id, setTask, tasks, setItem, status, se
                         id="firstCheckbox"
 
 
-// checkboxes don't toggle back and forth between active and done                        
-                        onClick={() => {
-                            if (status === "active"){
-                                setStatus("done")
-
-                            
-                            }}
+// checkboxes don't toggle back and forth both active -> done AND done -> active                     
+                        onClick={(e) => handleClick(item.id, e)}
                         
+                            // if (status === "active"){
+                            //     status = setStatus("done")
+                            // }
+
                             // let clickCount = 2
                 
                             // if (clickCount % 2 === 0){
@@ -30,7 +47,7 @@ export default function ListItem({ item, id, setTask, tasks, setItem, status, se
                             // clickCount++
                             // console.log(clickCount);
                         // }}
-                            }/>
+                            />
 
                         <label  
                             className="form-check-label" 
@@ -60,3 +77,5 @@ export default function ListItem({ item, id, setTask, tasks, setItem, status, se
             </li>
     )
 }
+
+                        
