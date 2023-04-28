@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/2dew/static/css/main.68eb9ebc.css",
+    "main.js": "/2dew/static/js/main.141e7716.js",
+    "index.html": "/2dew/index.html",
+    "main.68eb9ebc.css.map": "/2dew/static/css/main.68eb9ebc.css.map",
+    "main.141e7716.js.map": "/2dew/static/js/main.141e7716.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.68eb9ebc.css",
+    "static/js/main.141e7716.js"
+  ]
+}
