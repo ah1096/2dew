@@ -10,7 +10,7 @@ export default function App(){
     const [tasks, setTask] = useState(() => {
         return JSON.parse(window.localStorage.getItem('tasks')) || []
     });
-    const [status, setStatus] = useState("active");
+    const [taskStatus, setStatus] = useState("active");
 
     useEffect (() => {localStorage.setItem('tasks', JSON.stringify(tasks));
     }, [tasks]); //second param = tasks = array of values to watch/values that when changed, trigger useeffect
@@ -29,14 +29,14 @@ export default function App(){
                         setTask={setTask} 
                         tasks={tasks}
                         setStatus={setStatus}
-                        status={status}
+                        taskStatus={taskStatus}
                         />
 
                     <ListBlock 
                         tasks={tasks}
                         setTask={setTask}
                         setStatus={setStatus}
-                        status={status}/>
+                        taskStatus={taskStatus}/>
 
 
                 </div>
@@ -46,7 +46,7 @@ export default function App(){
                 setTask={setTask}
                 tasks={tasks}
                 setStatus={setStatus}
-                status={status}
+                taskStatus={taskStatus}
                 />
 
         </div>

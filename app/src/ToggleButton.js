@@ -1,62 +1,82 @@
-export default function ToggleButton({ item, id, setTask, tasks, setItem, status, setStatus }){
-    return(
-        <div id="toggleButtons" className="btn-group align-self-start" role="group">
+import ListItem from './ListItem.js';
 
-            <input 
-                id="toggleAllBtn" 
-                type="radio" 
-                className="btn-check" 
-                name="btnradio" 
-                autoComplete="off"
-                
-                // onClick={() => {
+export default function ToggleButton({ tasks, setTasks, filter, setFilter }) {
+    if (!Array.isArray(tasks)) {
+        return (
+            <div>
+                <p>Sorry, an error occurred!</p>
+            </div>
+        );
+      }
 
-                //     show all items, regardless of status
-                    
-                //     }}
-                
-                />
-                <label className="btn btn-outline-success" htmlFor="toggleAllBtn">
-                    all
-                </label>
 
-            <input 
-                id="toggleToDewBtn" 
-                type="radio" 
-                className="btn-check" 
-                name="btnradio" 
-                autoComplete="off"
-                
-                // onClick={(
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+  };
 
-                     //show only status=active items
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "all") {
+      return true;
+    } else if (filter === "active") {
+      return task.taskStatus === "active";
+    } else if (filter === "done") {
+      return task.taskStatus === "done";
+    }
+  });
 
-                // )}  
-                
-                />
-                <label 
-                    className="btn btn-outline-success" 
-                    htmlFor="toggleToDewBtn">
-                    to-dew
-                </label>
+  console.log("filteredTasks:", filteredTasks);
 
-            <input 
-                id="toggleDoneBtn" 
-                type="radio" 
-                className="btn-check" 
-                name="btnradio" 
-                autoComplete="off"
-                
-                // onClick={(
+  return (
+    <div id="toggleButtons" className="btn-group align-self-start" role="group">
+      <input 
+          id="toggleAllBtn" 
+          type="radio" 
+          className="btn-check" 
+          name="btnradio" 
+          autoComplete="off"
+          checked={filter === 'all'}
+          onChange={() => setFilter('all')}
+      />
+      <label className="btn btn-outline-success" htmlFor="toggleAllBtn">
+        all
+      </label>
 
-                //     show only status=done items
-                // )}
-                />
-                <label className="btn btn-outline-success" htmlFor="toggleDoneBtn">
-                    done
-                </label>
+      <input
+        id="toggleToDewBtn"
+        type="radio"
+        className="btn-check"
+        name="btnradio"
+        autoComplete="off"
+        checked={filter === "active"}
+        onChange={() => handleFilterChange("active")}
+      />
+      <label className="btn btn-outline-success" htmlFor="toggleToDewBtn">
+        to-dew
+      </label>
 
-        </div>
+      <input
+        id="toggleDoneBtn"
+        type="radio"
+        className="btn-check"
+        name="btnradio"
+        autoComplete="off"
+        checked={filter === "done"}
+        onChange={() => handleFilterChange("done")}
+      />
+      <label className="btn btn-outline-success" htmlFor="toggleDoneBtn">
+        done
+      </label>
 
-    )
+      <ul className="list-group mt-2">
+        {filteredTasks.map((task) => (
+          <ListItem
+            key={task.id}
+            task={task}
+            setTasks={setTasks}
+            tasks={tasks}
+          />
+        ))}
+      </ul>
+    </div>
+  );
 }
