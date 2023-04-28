@@ -1,36 +1,47 @@
 import ListItem from './ListItem.js';
+import ToggleButton from './ToggleButton.js';
+import { useState } from 'react';
 
+export default function ListBlock(props) {
+  const [filter, setFilter] = useState("all");
 
+  const filteredTasks = props.tasks.filter((task) => {
+    if (filter === "active") {
+      return task.taskstatus === "active";
+    } else if (filter === "done") {
+      return task.taskstatus === "done";
+    }
+    return true;
+  });
 
-export default function ListBlock ({item, id, setTask, tasks, status, setStatus}) {
+  const handleTaskClick = (clickedTask) => {
+    const updatedTasks = props.tasks.map((task) => {
+      if (task.id === clickedTask.id) {
+        return { ...task, taskstatus: task.taskstatus === "active" ? "done" : "active" };
+      }
+      return task;
+    });
+    props.setTask(updatedTasks);
+  };
 
-    const toDoList = tasks.map(item => 
-        <div key={item.id}>
-            <ListItem 
-                item={item.item}
-                id={item.id}
-                setTask={setTask}
-                tasks={tasks}
-                status={status}
-                setStatus={setStatus}
+  const handleDeleteClick = (clickedTask) => {
+    const updatedTasks = props.tasks.filter((task) => task.id !== clickedTask.id);
+    props.setTask(updatedTasks);
+  };
 
-                />
-        </div>
-        )
-
-    return (
-        <div className="row">
-
-        <div className="col">
-            <ul className="list-group">
-
-                {toDoList}
-
-            </ul>
-        </div>
-
-        
+  return (
+    <div>
+      <ul className="list-group mt-2">
+        {filteredTasks.map((task) => (
+          <ListItem
+            key={task.id}
+            task={task}
+            handleTaskClick={handleTaskClick}
+            handleDeleteClick={handleDeleteClick}
+          />
+        ))}
+      </ul>
+      <ToggleButton filter={filter} setFilter={setFilter} />
     </div>
-    )
-
+  );
 }

@@ -1,41 +1,28 @@
-import ListItem from './ListItem.js';
+import React from 'react';
+import ListItem from './ListItem';
 
-export default function ToggleButton({ tasks, setTasks, filter, setFilter }) {
-    if (!Array.isArray(tasks)) {
-        return (
-            <div>
-                <p>Sorry, an error occurred!</p>
-            </div>
-        );
-      }
-
+export default function ToggleButton(props) {
+  const { tasks, filter, setFilter, handleStatusChange } = props;
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
   };
 
-  const filteredTasks = tasks.filter((task) => {
-    if (filter === "all") {
-      return true;
-    } else if (filter === "active") {
-      return task.taskStatus === "active";
-    } else if (filter === "done") {
-      return task.taskStatus === "done";
-    }
-  });
-
-  console.log("filteredTasks:", filteredTasks);
+  const activeTasks = tasks ?? [] // nullish coalescing operator
+    .filter((task) => task.taskStatus === "active");
+  const doneTasks = tasks ?? [] // nullish coalescing operator
+    .filter((task) => task.taskStatus === "done");
 
   return (
     <div id="toggleButtons" className="btn-group align-self-start" role="group">
       <input 
-          id="toggleAllBtn" 
-          type="radio" 
-          className="btn-check" 
-          name="btnradio" 
-          autoComplete="off"
-          checked={filter === 'all'}
-          onChange={() => setFilter('all')}
+        id="toggleAllBtn" 
+        type="radio" 
+        className="btn-check" 
+        name="btnradio" 
+        autoComplete="off"
+        checked={filter === 'all'}
+        onChange={() => setFilter('all')}
       />
       <label className="btn btn-outline-success" htmlFor="toggleAllBtn">
         all
@@ -67,14 +54,15 @@ export default function ToggleButton({ tasks, setTasks, filter, setFilter }) {
         done
       </label>
 
-      <ul className="list-group mt-2">
-        {filteredTasks.map((task) => (
-          <ListItem
-            key={task.id}
-            task={task}
-            setTasks={setTasks}
-            tasks={tasks}
-          />
+      <ul>
+        {activeTasks.map((task) => (
+          <ListItem key={task.id} task={task} handleStatusChange={handleStatusChange} />
+        ))}
+      </ul>
+
+      <ul>
+        {doneTasks.map((task) => (
+          <ListItem key={task.id} task={task} handleStatusChange={handleStatusChange} />
         ))}
       </ul>
     </div>

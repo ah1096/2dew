@@ -1,32 +1,24 @@
+import React, { useState } from 'react';
 import ToggleButton from './ToggleButton.js';
 
+export default function ControlBlock(props) {
+  return (
+    <div id="controlBlock" className="row text-center">
+      <div className="col">
+        <p id="itemCounter" className="text-danger">
+          {props.tasks.length} item(s) left
+        </p>
 
-export default function ControlBlock({setTask, tasks}){
+        <ToggleButton {...props} />
 
-
-    
-    return (
-        <div id="controlBlock" className="row text-center">
-
-                <div className="col">
-
-                    <p id="itemCounter" className="text-danger">
-                        {tasks.length} item(s) left
-                    </p>
-            
-                    <ToggleButton />
-
-                    <button 
-                        id="clearBtn" 
-                        className="btn btn-success"
-                        onClick={() => {setTask(tasks = [])}}
-                    >
-                        clear
-                    </button>
-
-                </div>
-
-            </div>
-
-    )
+        <button 
+          id="clearBtn" 
+          className="btn btn-success"
+          onClick={() => {props.setTask([])}}
+        >
+          clear
+        </button>
+      </div>
+    </div>
+  )
 }

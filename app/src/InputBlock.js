@@ -1,37 +1,35 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export default function InputBlock({ tasks, setTask }) {
-  const [item, setItem] = useState("");
+export default function InputBlock(props) {
+  const [newTask, setNewTask] = useState('');
+
+  const handleTaskChange = (event) => {
+    setNewTask(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.setTask([
+      ...props.tasks,
+      { id: Date.now(), taskDescription: newTask, taskStatus: props.taskstatus },
+    ]);
+    setNewTask('');
+  };
 
   return (
-    <div id="inputBlock" className="text-center">
-      <h1>To Dew List</h1>
-      <div id="addTask" className="input-group mb-3">
+    <form onSubmit={handleSubmit}>
+      <div className="input-group mb-3">
         <input
-          id="itemInput"
           type="text"
           className="form-control"
-          placeholder="add a task"
-          value={item}
-          onChange={(e) => setItem(e.target.value)}
+          placeholder="Add Task..."
+          value={newTask}
+          onChange={handleTaskChange}
         />
-
-        <button
-          className="btn btn-success"
-          type="button"
-          id="addItemBtn"
-          onClick={() => {
-            setTask([
-              ...tasks,
-              { id: Date.now(), item: item }
-            ]);
-            setItem("");
-          }}
-        >
-          +
+        <button className="btn btn-success" type="submit">
+          Add
         </button>
       </div>
-    </div>
+    </form>
   );
 }
-        
